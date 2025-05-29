@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { CheckCircle, Shield, Lock, Eye, Database, Globe } from "lucide-react";
+import { CheckCircle, Shield, Lock, Eye, WifiOff, KeyRound } from "lucide-react"; // Added WifiOff and KeyRound
 
 interface QuizProps {
   onComplete: (data: any) => void;
@@ -12,68 +11,68 @@ interface QuizProps {
 const quizQuestions = [
   {
     id: 1,
-    icon: Shield,
-    question: "What is the primary purpose of GDPR (General Data Protection Regulation)?",
+    icon: KeyRound, // Changed icon
+    question: "Do you use different passwords for different online accounts?",
     options: [
-      "To increase website loading speeds",
-      "To protect personal data and privacy rights",
-      "To standardize web design across Europe",
-      "To reduce internet costs"
+      "Yes, for all or most of them",
+      "Sometimes, for important ones",
+      "No, I use the same password for many accounts",
+      "I'm not sure"
     ],
-    correct: 1,
-    explanation: "GDPR is designed to protect personal data and give individuals control over their privacy."
+    correct: 0, // "Yes, for all or most of them" is encouraged
+    explanation: "Using unique passwords for each account is crucial. If one account is compromised, others remain secure."
   },
   {
     id: 2,
     icon: Lock,
-    question: "Which of these is considered personal data under privacy laws?",
+    question: "How often do you change your important passwords (e.g., email, banking)?",
     options: [
-      "Your IP address",
-      "Your device's screen resolution",
-      "Anonymous analytics data",
-      "Public website content"
+      "Regularly, every few months",
+      "Only when a site forces me to",
+      "Rarely or never",
+      "I use a password manager that helps me update them"
     ],
-    correct: 0,
-    explanation: "IP addresses can be used to identify individuals and are considered personal data."
+    correct: 0, // Or 3, depending on interpretation. Regular changes or password manager use are good.
+    explanation: "Regularly updating passwords or using a password manager to create and store strong, unique passwords helps protect your accounts."
   },
   {
     id: 3,
-    icon: Eye,
-    question: "What are tracking cookies primarily used for?",
+    icon: WifiOff, // Changed icon
+    question: "What is a VPN (Virtual Private Network) primarily used for?",
     options: [
-      "Improving website security",
-      "Storing user preferences",
-      "Following users across different websites",
-      "Making websites load faster"
+      "To make your internet connection faster",
+      "To get free Wi-Fi everywhere",
+      "To encrypt your internet traffic and hide your IP address",
+      "To block all advertisements"
     ],
     correct: 2,
-    explanation: "Tracking cookies follow users across sites to build detailed profiles for advertising."
+    explanation: "A VPN encrypts your internet connection, enhancing privacy and security by masking your IP address and protecting your data from being easily intercepted."
   },
   {
     id: 4,
-    icon: Database,
-    question: "How long can websites typically store your personal data?",
+    icon: Shield,
+    question: "When using public Wi-Fi (e.g., at a cafe or airport), what's a good practice?",
     options: [
-      "Forever, once collected",
-      "Only as long as necessary for the stated purpose",
-      "Exactly one year",
-      "Until you clear your browser cache"
+      "It's always safe, no special precautions needed",
+      "Only access sensitive information if the Wi-Fi has a password",
+      "Avoid accessing sensitive accounts or use a VPN",
+      "Download as much as possible because it's free"
     ],
-    correct: 1,
-    explanation: "Privacy laws require data to be deleted when no longer needed for its original purpose."
+    correct: 2,
+    explanation: "Public Wi-Fi networks can be insecure. It's best to avoid logging into sensitive accounts or to use a VPN for an encrypted connection."
   },
   {
     id: 5,
-    icon: Globe,
-    question: "What right do you have regarding your personal data under most privacy laws?",
+    icon: Eye,
+    question: "What does 'two-factor authentication' (2FA) mean?",
     options: [
-      "The right to free internet access",
-      "The right to access, correct, and delete your data",
-      "The right to unlimited data storage",
-      "The right to anonymous browsing"
+      "You need two different devices to log in",
+      "Your password must be twice as long",
+      "You need a second piece of information (like a code from your phone) in addition to your password",
+      "You can only log in two times per day"
     ],
-    correct: 1,
-    explanation: "Privacy laws grant individuals rights to access, rectify, and erase their personal data."
+    correct: 2,
+    explanation: "Two-factor authentication adds an extra layer of security by requiring a second form of verification beyond just your password."
   }
 ];
 
@@ -81,7 +80,7 @@ const Quiz = ({ onComplete }: QuizProps) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [showExplanation, setShowExplanation] = useState(false);
+  // const [showExplanation, setShowExplanation] = useState(false); // Removed showExplanation state
 
   const handleAnswerSelect = (answerIndex: number) => {
     setSelectedAnswer(answerIndex);
@@ -96,7 +95,7 @@ const Quiz = ({ onComplete }: QuizProps) => {
     if (currentQuestion < quizQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
       setSelectedAnswer(null);
-      setShowExplanation(false);
+      // setShowExplanation(false); // Removed
     } else {
       // Quiz completed
       const score = newAnswers.reduce((acc, answer, index) => {
@@ -112,9 +111,9 @@ const Quiz = ({ onComplete }: QuizProps) => {
     }
   };
 
-  const handleShowExplanation = () => {
-    setShowExplanation(true);
-  };
+  // const handleShowExplanation = () => { // Removed handleShowExplanation function
+  // setShowExplanation(true);
+  // };
 
   const question = quizQuestions[currentQuestion];
   const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
@@ -174,31 +173,11 @@ const Quiz = ({ onComplete }: QuizProps) => {
               ))}
             </div>
 
-            {/* Explanation */}
-            {showExplanation && (
-              <div className="mt-6 p-4 bg-green-900/20 border border-green-700/30 rounded-xl">
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-green-300 mb-1">Explanation</h4>
-                    <p className="text-green-200 text-sm leading-relaxed">{question.explanation}</p>
-                  </div>
-                </div>
-              </div>
-            )}
+            {/* Explanation section completely removed */}
 
             {/* Action Buttons */}
             <div className="flex gap-3 pt-6">
-              {selectedAnswer !== null && !showExplanation && (
-                <Button
-                  variant="outline"
-                  onClick={handleShowExplanation}
-                  className="flex-1 border-gray-600 text-gray-300 bg-gray-700/50 hover:bg-gray-600/50 hover:text-white"
-                >
-                  Show Explanation
-                </Button>
-              )}
-              
+              {/* "Show Explanation" Button completely removed */}
               <Button
                 onClick={handleNext}
                 disabled={selectedAnswer === null}

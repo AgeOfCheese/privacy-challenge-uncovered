@@ -19,8 +19,7 @@ const CookieConsent = ({ onAccept, onReject }: CookieConsentProps) => {
             <div>
               <h3 className="font-semibold text-white mb-1">Data Collection Notice</h3>
               <p className="text-sm text-gray-300 leading-relaxed">
-                We're tracking your behavior on this site. Your choice here will be recorded 
-                and added to your digital profile. Choose wisely.
+                We use cookies to ensure that you get the best experience
               </p>
             </div>
           </div>
@@ -31,13 +30,13 @@ const CookieConsent = ({ onAccept, onReject }: CookieConsentProps) => {
               onClick={onReject}
               className="px-6 py-2 border-gray-600 text-gray-300 bg-gray-800/50 hover:bg-gray-700/50"
             >
-              Reject
+              Reject Non-Essential
             </Button>
             <Button 
               onClick={onAccept}
               className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white border border-red-500/50"
             >
-              Accept Tracking
+              Accept Cookies
             </Button>
           </div>
         </div>
