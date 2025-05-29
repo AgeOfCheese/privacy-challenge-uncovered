@@ -121,27 +121,27 @@ const Quiz = ({ onComplete }: QuizProps) => {
   const Icon = question.icon;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black py-8">
       <div className="container mx-auto px-4 max-w-3xl">
         {/* Progress Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-2xl font-bold text-gray-900">Data Privacy Quiz</h1>
-            <span className="text-sm font-medium text-gray-600">
+            <h1 className="text-2xl font-bold text-white">Data Privacy Quiz</h1>
+            <span className="text-sm font-medium text-gray-400">
               Question {currentQuestion + 1} of {quizQuestions.length}
             </span>
           </div>
-          <Progress value={progress} className="h-2" />
+          <Progress value={progress} className="h-2 bg-gray-700" />
         </div>
 
         {/* Question Card */}
-        <Card className="shadow-xl border-0 bg-white">
+        <Card className="shadow-xl border border-gray-700/50 bg-gray-800/50 backdrop-blur-sm">
           <CardHeader className="pb-6">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-                <Icon className="w-6 h-6 text-blue-600" />
+              <div className="w-12 h-12 bg-red-900/30 rounded-xl flex items-center justify-center border border-red-700/30">
+                <Icon className="w-6 h-6 text-red-400" />
               </div>
-              <CardTitle className="text-xl leading-relaxed">{question.question}</CardTitle>
+              <CardTitle className="text-xl leading-relaxed text-white">{question.question}</CardTitle>
             </div>
           </CardHeader>
           
@@ -154,21 +154,21 @@ const Quiz = ({ onComplete }: QuizProps) => {
                   onClick={() => handleAnswerSelect(index)}
                   className={`w-full p-4 text-left rounded-xl border-2 transition-all hover:shadow-md ${
                     selectedAnswer === index
-                      ? 'border-blue-500 bg-blue-50 shadow-md'
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-red-500 bg-red-900/20 shadow-md text-white'
+                      : 'border-gray-600 hover:border-gray-500 bg-gray-700/30 text-gray-300 hover:text-white'
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
                       selectedAnswer === index
-                        ? 'border-blue-500 bg-blue-500'
-                        : 'border-gray-300'
+                        ? 'border-red-500 bg-red-500'
+                        : 'border-gray-500'
                     }`}>
                       {selectedAnswer === index && (
                         <CheckCircle className="w-4 h-4 text-white" />
                       )}
                     </div>
-                    <span className="font-medium text-gray-900">{option}</span>
+                    <span className="font-medium">{option}</span>
                   </div>
                 </button>
               ))}
@@ -176,12 +176,12 @@ const Quiz = ({ onComplete }: QuizProps) => {
 
             {/* Explanation */}
             {showExplanation && (
-              <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-xl">
+              <div className="mt-6 p-4 bg-green-900/20 border border-green-700/30 rounded-xl">
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-green-900 mb-1">Explanation</h4>
-                    <p className="text-green-800 text-sm leading-relaxed">{question.explanation}</p>
+                    <h4 className="font-semibold text-green-300 mb-1">Explanation</h4>
+                    <p className="text-green-200 text-sm leading-relaxed">{question.explanation}</p>
                   </div>
                 </div>
               </div>
@@ -193,7 +193,7 @@ const Quiz = ({ onComplete }: QuizProps) => {
                 <Button
                   variant="outline"
                   onClick={handleShowExplanation}
-                  className="flex-1"
+                  className="flex-1 border-gray-600 text-gray-300 bg-gray-700/50 hover:bg-gray-600/50 hover:text-white"
                 >
                   Show Explanation
                 </Button>
@@ -202,7 +202,7 @@ const Quiz = ({ onComplete }: QuizProps) => {
               <Button
                 onClick={handleNext}
                 disabled={selectedAnswer === null}
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+                className="flex-1 bg-red-600 hover:bg-red-700 text-white border border-red-500/50"
               >
                 {currentQuestion === quizQuestions.length - 1 ? 'Finish Quiz' : 'Next Question'}
               </Button>

@@ -102,7 +102,7 @@ const Index = () => {
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Every click, every choice, every moment on this site is being tracked. 
-              Take this quiz to see exactly what we're collecting about you.
+              Take this quiz to test your knowledge about data privacy.
             </p>
           </div>
 
@@ -114,7 +114,7 @@ const Index = () => {
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">We See Everything</h3>
               <p className="text-gray-400">
-                Your browser, device, location, and choices are all being recorded.
+                Your browser, device, location, and behavior are all being recorded.
               </p>
             </div>
 
@@ -142,11 +142,11 @@ const Index = () => {
           {/* Call to Action */}
           <div className="bg-gray-800/30 rounded-2xl p-12 shadow-2xl border border-gray-700/30 backdrop-blur-sm">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Ready to See What We Know About You?
+              Ready to Test Your Privacy Knowledge?
             </h2>
             <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-              Take our quiz. We'll show you exactly what data we've collected during your visit. 
-              You might be surprised.
+              Take our quiz to test what you know about data privacy and digital tracking. 
+              You might be surprised by what you learn.
             </p>
             
             <Button 
