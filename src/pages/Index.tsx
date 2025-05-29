@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Shield, Eye, Lock, BarChart3 } from "lucide-react";
+import { Shield, Eye, Lock, BarChart3, AlertTriangle } from "lucide-react";
 import Quiz from "@/components/Quiz";
 import CookieConsent from "@/components/CookieConsent";
 import TermsOfService from "@/components/TermsOfService";
@@ -71,7 +71,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
       {/* Cookie Consent Banner */}
       {showCookieBanner && cookieConsent === null && (
         <CookieConsent 
@@ -94,79 +94,80 @@ const Index = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Header */}
           <div className="mb-12 animate-fade-in">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 rounded-full mb-6">
-              <Shield className="w-10 h-10 text-blue-600" />
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-red-900/20 rounded-full mb-6 border border-red-800/30">
+              <AlertTriangle className="w-10 h-10 text-red-400" />
             </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Data Privacy <span className="text-blue-600">Challenge Quiz</span>
+            <h1 className="text-5xl font-bold text-white mb-6 leading-tight">
+              You Are Being <span className="text-red-400">Watched</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Discover how websites collect your data while learning about digital privacy. 
-              This interactive quiz demonstrates real data gathering techniques in action.
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Every click, every choice, every moment on this site is being tracked. 
+              Take this quiz to see exactly what we're collecting about you.
             </p>
           </div>
 
           {/* Features Grid */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <Eye className="w-6 h-6 text-green-600" />
+            <div className="bg-gray-800/50 rounded-2xl p-8 shadow-xl border border-gray-700/50 hover:shadow-2xl transition-all hover:bg-gray-800/70">
+              <div className="w-12 h-12 bg-amber-900/30 rounded-lg flex items-center justify-center mb-4 mx-auto border border-amber-700/30">
+                <Eye className="w-6 h-6 text-amber-400" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">See What's Collected</h3>
-              <p className="text-gray-600">
-                Learn exactly what data websites gather about you during your visit.
+              <h3 className="text-xl font-semibold text-white mb-3">We See Everything</h3>
+              <p className="text-gray-400">
+                Your browser, device, location, and choices are all being recorded.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <Lock className="w-6 h-6 text-purple-600" />
+            <div className="bg-gray-800/50 rounded-2xl p-8 shadow-xl border border-gray-700/50 hover:shadow-2xl transition-all hover:bg-gray-800/70">
+              <div className="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center mb-4 mx-auto border border-purple-700/30">
+                <Lock className="w-6 h-6 text-purple-400" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Privacy Education</h3>
-              <p className="text-gray-600">
-                Test your knowledge about data privacy and protection techniques.
+              <h3 className="text-xl font-semibold text-white mb-3">Privacy is Dead</h3>
+              <p className="text-gray-400">
+                Learn how your digital footprint is collected and sold.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <BarChart3 className="w-6 h-6 text-orange-600" />
+            <div className="bg-gray-800/50 rounded-2xl p-8 shadow-xl border border-gray-700/50 hover:shadow-2xl transition-all hover:bg-gray-800/70">
+              <div className="w-12 h-12 bg-red-900/30 rounded-lg flex items-center justify-center mb-4 mx-auto border border-red-700/30">
+                <BarChart3 className="w-6 h-6 text-red-400" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Real-Time Stats</h3>
-              <p className="text-gray-600">
-                View aggregated data from all quiz participants to see privacy trends.
+              <h3 className="text-xl font-semibold text-white mb-3">Your Data Profile</h3>
+              <p className="text-gray-400">
+                See how your information joins millions of others in our database.
               </p>
             </div>
           </div>
 
           {/* Call to Action */}
-          <div className="bg-white rounded-2xl p-12 shadow-xl border border-gray-100">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Ready to See What Websites Learn About You?
+          <div className="bg-gray-800/30 rounded-2xl p-12 shadow-2xl border border-gray-700/30 backdrop-blur-sm">
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Ready to See What We Know About You?
             </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Take our interactive quiz and discover the hidden world of data collection. 
-              You'll see exactly what information is gathered during your visit.
+            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+              Take our quiz. We'll show you exactly what data we've collected during your visit. 
+              You might be surprised.
             </p>
             
             <Button 
               onClick={handleStartQuiz}
               size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105"
+              className="bg-red-600 hover:bg-red-700 text-white px-12 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 border border-red-500/50"
             >
-              Start Privacy Quiz
+              Enter the Data Mine
             </Button>
             
             <p className="text-sm text-gray-500 mt-4">
-              No personal information required • Educational purposes only
+              Data collection in progress • Tracking enabled
             </p>
           </div>
 
-          {/* Educational Note */}
-          <div className="mt-12 p-6 bg-blue-50 rounded-xl border border-blue-200">
-            <p className="text-blue-800 font-medium">
-              🛡️ This is an educational demonstration. All data collection is transparent and used only for learning purposes.
-            </p>
+          {/* Warning Note */}
+          <div className="mt-12 p-6 bg-red-900/20 rounded-xl border border-red-800/30 backdrop-blur-sm">
+            <div className="flex items-center justify-center gap-2 text-red-400 font-medium">
+              <AlertTriangle className="w-5 h-5" />
+              <span>This is a demonstration. Your data is being collected for educational purposes.</span>
+            </div>
           </div>
         </div>
       </div>
